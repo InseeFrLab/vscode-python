@@ -1,0 +1,16 @@
+pandas
+datetime
+unidecode
+scikit-learn
+xgboost
+#cython
+#nltk
+#spacy
+#tensorflow
+#btbpy
+#keras
+#kerasvis
+#torch
+#spark
+#pyspark
+#descartes
