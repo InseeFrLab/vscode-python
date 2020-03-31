@@ -1,6 +1,5 @@
 FROM codercom/code-server:3.0.1
-RUN sudo apt-get update
-RUN sudo apt-get -y install python3-pip
+RUN sudo apt-get -y update && sudo apt-get -y install python3-pip
 RUN export PYTHONPATH="${PYTHONPATH}:/home/coder/.local/bin"
 ADD requirements.txt /home/coder/requirements.txt
 RUN pip3 install --upgrade -r /home/coder/requirements.txt
