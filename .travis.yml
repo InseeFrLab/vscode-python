@@ -1,0 +1,14 @@
+services:
+  - docker
+addons:
+  organization: "inseefrlab"
+script:
+  - docker build -t inseefrlab/vscode-python .
+deploy:
+  skip_cleanup: true
+  provider: script
+  script:
+    echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+    && docker push inseefrlab/vscode-python
+  on:
+    branch: master
