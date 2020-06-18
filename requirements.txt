@@ -1,8 +1,10 @@
+wheel
 pandas
 datetime
 unidecode
 scikit-learn
 xgboost
+pylint
 #cython
 #nltk
 #spacy
