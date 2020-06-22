@@ -1,4 +1,4 @@
-FROM codercom/code-server:3.0.1
+FROM codercom/code-server:3.4.1
 RUN sudo apt-get -y update && sudo apt-get -y install python3-pip pipenv cmake
 RUN export PYTHONPATH="${PYTHONPATH}:/home/coder/.local/bin"
 ADD requirements.txt /home/coder/requirements.txt
