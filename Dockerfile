@@ -5,5 +5,6 @@ ADD requirements.txt /home/coder/requirements.txt
 RUN pip3 install --upgrade -r /home/coder/requirements.txt
 RUN rm /home/coder/requirements.txt
 RUN code-server --install-extension ms-python.python
+RUN git config --global http.sslVerify false
 #ADD vscode-settings.json /home/coder/.local/share/code-server/User/settings.json
 
