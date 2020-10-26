@@ -8,5 +8,7 @@ RUN export PYTHONPATH="${PYTHONPATH}:/home/coder/.local/bin"
 ADD requirements.txt /home/coder/requirements.txt
 RUN pip3 install --upgrade -r /home/coder/requirements.txt
 RUN rm /home/coder/requirements.txt
-RUN code-server --install-extension ms-python.python ms-kubernetes-tools.vscode-kubernetes-tools redhat.vscode-yaml
+RUN code-server --install-extension ms-python.python
+RUN code-server --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
+RUN code-server --install-extension redhat.vscode-yaml  
 #ADD vscode-settings.json /home/coder/.local/share/code-server/User/settings.json
