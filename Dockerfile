@@ -5,7 +5,7 @@ RUN sudo wget "https://storage.googleapis.com/kubernetes-release/release/$(curl 
 RUN sudo wget https://dl.min.io/client/mc/release/linux-amd64/mc -O /usr/local/bin/mc && \
     sudo chmod +x /usr/local/bin/mc
 ENV PYTHONPATH="${PYTHONPATH}:/home/coder/.local/bin"
-ENV PATH="/home/coder/.local/bin:${$PATH}"
+ENV PATH="/home/coder/.local/bin:${PATH}"
 ADD requirements.txt /home/coder/requirements.txt
 RUN pip3 install --upgrade -r /home/coder/requirements.txt
 RUN rm /home/coder/requirements.txt
