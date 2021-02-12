@@ -1,4 +1,4 @@
-FROM codercom/code-server:3.8.0
+FROM codercom/code-server:3.8.1
 
 RUN sudo apt-get -y update && \
     sudo apt-get -y install wget \
