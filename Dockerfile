@@ -5,6 +5,7 @@ RUN sudo apt-get -y update && \
                             python3-pip \
                             pipenv \ 
                             cmake \
+                            jq \
                             bash-completion
                             
 RUN sudo wget "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" -O /usr/local/bin/kubectl && \
