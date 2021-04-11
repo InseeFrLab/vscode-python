@@ -38,8 +38,9 @@ jobs:
           # push: ${{ github.event_name != 'pull_request' }}
           # Use tags computed before and also latest if on master
           tags: |
-            ${{ steps.docker_meta.outputs.tags }}
-            ${{ github.ref == 'refs/heads/master' && 'inseefrlab/vscode-python:latest' || '' }}
+#            ${{ steps.docker_meta.outputs.tags }}
+#            ${{ github.ref == 'refs/heads/master' && 'inseefrlab/vscode-python:latest' || '' }}
+            ${{ github.ref == 'refs/heads/alias' && 'inseefrlab/vscode-python:latest' || '' }}
           labels: ${{ steps.docker_meta.outputs.labels }}
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
