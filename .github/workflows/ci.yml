@@ -35,7 +35,7 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          push: ${{ github.event_name != 'pull_request' }}
+          # push: ${{ github.event_name != 'pull_request' }}
           # Use tags computed before and also latest if on master
           tags: |
             ${{ steps.docker_meta.outputs.tags }}
