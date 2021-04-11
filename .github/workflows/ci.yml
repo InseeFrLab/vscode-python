@@ -35,10 +35,6 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
-          # push: ${{ github.event_name != 'pull_request' }}
-          # Use tags computed before and also latest if on master
-          tags: |
-            ${{ github.ref == 'refs/heads/alias' && 'inseefrlab/vscode-python:latest' || '' }}
-          labels: ${{ steps.docker_meta.outputs.labels }}
+          push: true
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
