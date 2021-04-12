@@ -10,3 +10,4 @@ If you find something is missing for general python programming with this image,
 # Tips
 - Use [Settings Sync](https://marketplace.visualstudio.com/items?itemName=Shan.code-settings-sync) to sync up your custom configuration and extension and start a new properly tuned session in a heartbeat.
 - The paste shortcut in the terminal is: ```SHIFT + INSER```
+- Use Firefox for full compatibility
