@@ -2,7 +2,7 @@
 
 A docker image based on https://github.com/cdr/code-server tailored for python programming.
 
-It aims to provide a state-of-art IDE with some modules adapted to `Python` to help developers.  
+It aims to provide a state-of-the-art IDE with some modules adapted to `Python` to help developers.  
 
 # How to use it
 
@@ -15,7 +15,13 @@ pd.DataFrame([0, 1, 2])
 
 and press ```SHIFT + ENTER```
 
-Please visit https://github.com/cdr/code-server for knowing how to use this image.
+If you need a package, e.g. `flask`, open a terminal and run 
+
+```shell
+pip install flask
+```
+
+Please visit https://github.com/cdr/code-server to learn how to use this image.
 
 # How to contribute
 If you find something is missing for general python programming with this image, don't hesitate to let us know, either with an issue or by submitting a PR.
