@@ -32,4 +32,4 @@ RUN code-server --install-extension redhat.vscode-yaml
 
 RUN alias python=python3
 
-echo "alias pip=pip3" >> .bashrc
+echo "alias pip=pip3" >> ~/.bashrc
