@@ -35,7 +35,7 @@ docker pull InseeFrLab/vscode-python
 ```
 
 ```shell
-docker run -it -p 127.0.0.1:8080:8080 -e PASSWORD=test InseeFrLab/vscode-python
+docker run -it -p 127.0.0.1:8080:8080 -e PASSWORD="YOUR_PASSWORD" InseeFrLab/vscode-python
 ```
 
-:tada: open your browser at `http://localhost:8080/`
+:tada: open your browser at `http://localhost:8080/` and use the password you chose (e.g. `YOUR_PASSWORD`)
