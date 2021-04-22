@@ -29,3 +29,6 @@ RUN code-server --install-extension ms-python.python
 RUN code-server --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
 RUN code-server --install-extension redhat.vscode-yaml  
 #ADD vscode-settings.json /home/coder/.local/share/code-server/User/settings.json
+
+RUN alias python=python3
+RUN echo "alias pip=pip3" >> ~/.bashrc
