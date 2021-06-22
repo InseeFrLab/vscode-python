@@ -1,4 +1,4 @@
-FROM codercom/code-server:3.9.1
+FROM codercom/code-server:3.10.2
 
 RUN sudo apt-get -y update && \
     sudo apt-get -y install wget \
@@ -30,5 +30,5 @@ RUN code-server --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
 RUN code-server --install-extension redhat.vscode-yaml  
 #ADD vscode-settings.json /home/coder/.local/share/code-server/User/settings.json
 
-RUN alias python=python3
 RUN echo "alias pip=pip3" >> ~/.bashrc
+RUN echo "alias python=python3" >> ~/.bashrc
