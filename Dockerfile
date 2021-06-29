@@ -30,5 +30,30 @@ RUN code-server --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
 RUN code-server --install-extension redhat.vscode-yaml  
 #ADD vscode-settings.json /home/coder/.local/share/code-server/User/settings.json
 
+
+RUN wget \
+    https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+    && mkdir -p /opt \
+    && bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda \
+    && rm -f Miniconda3-latest-Linux-x86_64.sh \
+    && useradd -s /bin/bash miniconda
+    
+RUN chown -R miniconda:miniconda /opt/conda \
+    && chmod -R go-w /opt/conda
+
+    
+RUN ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
+    
+ENV PATH /opt/conda/bin:$PATH
+RUN conda --version
+
+# Create the environment:
+COPY environment.yml .
+RUN conda env create -f environment.yml -n base
+
+
 RUN echo "alias pip=pip3" >> ~/.bashrc
 RUN echo "alias python=python3" >> ~/.bashrc
+
+RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
+    echo "conda activate base" >> ~/.bashrc
