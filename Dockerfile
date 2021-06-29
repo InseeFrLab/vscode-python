@@ -33,8 +33,8 @@ RUN code-server --install-extension redhat.vscode-yaml
 
 RUN wget \
     https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-RUN mkdir -p /opt \
-    && /bin/bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda \
+RUN mkdir -p /opt
+RUN Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda \
     && rm -f Miniconda3-latest-Linux-x86_64.sh
 RUN useradd -s /bin/bash miniconda
     
