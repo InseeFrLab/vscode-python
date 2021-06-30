@@ -59,5 +59,7 @@ RUN echo "alias python=python3" >> ~/.bashrc
 
 RUN echo ". /home/coder/local/bin/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "conda activate base-sspcloud" >> ~/.bashrc
+RUN echo "\"python.pythonPath\": \"/home/coder/local/bin/conda/envs/base-sspcloud/bin\" " >> /home/coder/.local/share/code-server/User/settings.json
+    
     
 ENV PATH /home/coder/local/bin/conda/envs/base-sspcloud/bin:$PATH
