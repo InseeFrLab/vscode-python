@@ -51,7 +51,7 @@ RUN conda --version
 # Create the environment:
 COPY environment.yml .
 RUN conda env create -f environment.yml -n base-sspcloud
-RUN conda activate base-sspcloud
+
 
 RUN echo "alias pip=pip3" >> ~/.bashrc
 RUN echo "alias python=python3" >> ~/.bashrc
