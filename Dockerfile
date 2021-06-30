@@ -36,7 +36,7 @@ RUN wget \
 RUN sudo mkdir -p /opt/conda
 RUN ls
 
-RUN bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda \
+RUN bash Miniconda3-latest-Linux-x86_64.sh -b -u /opt/conda \
     && rm -f Miniconda3-latest-Linux-x86_64.sh
 RUN useradd -s /bin/bash miniconda
     
