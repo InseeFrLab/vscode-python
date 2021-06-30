@@ -45,7 +45,7 @@ RUN sudo chown -R miniconda:miniconda /home/coder/local/bin/conda \
     
 RUN sudo ln -s /home/coder/local/bin/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
     
-ENV PATH /home/coder/local/bin/conda/bin:$PATH
+ENV PATH="/home/coder/local/bin/conda/bin:${PATH}"
 RUN conda --version
 
 # Create the environment:
