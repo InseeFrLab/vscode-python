@@ -36,7 +36,7 @@ RUN wget \
 RUN mkdir -p /opt
 RUN ls
 RUN chmod +x Miniconda3-latest-Linux-x86_64.sh
-RUN /bin/sh -c Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda \
+RUN bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda \
     && rm -f Miniconda3-latest-Linux-x86_64.sh
 RUN useradd -s /bin/bash miniconda
     
