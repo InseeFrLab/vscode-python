@@ -57,9 +57,8 @@ ENV CONDA_DEFAULT_ENV="basesspcloud"
 RUN echo "alias pip=pip3" >> ~/.bashrc
 RUN echo "alias python=python3" >> ~/.bashrc
 
-RUN echo ". /home/coder/local/bin/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-    echo "conda activate basesspcloud" >> ~/.bashrc
-RUN echo "\"python.pythonPath\": \"/home/coder/local/bin/conda/envs/basesspcloud/bin\" " >> /home/coder/.local/share/code-server/User/settings.json
+RUN echo "conda activate basesspcloud" >> ~/.bashrc
+RUN echo "\"python.pythonPath\": \"/home/coder/.conda/envs/basesspcloud/bin\" " >> /home/coder/.local/share/code-server/User/settings.json
     
     
-ENV PATH /home/coder/local/bin/conda/envs/basesspcloud/bin:$PATH
+ENV PATH="/home/coder/.conda/envs/basesspcloud/bin:$PATH"
