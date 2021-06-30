@@ -6,8 +6,6 @@ dependencies:
   - numpy
   - pandas
   - seaborn
-  - datetime
-  - unidecode
   - scikit-learn
   - xgboost
   - pylint
