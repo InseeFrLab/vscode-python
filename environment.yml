@@ -1,4 +1,4 @@
-name: base-sspcloud
+name: basesspcloud
 
 channels:
   - conda-forge

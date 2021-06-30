@@ -50,16 +50,16 @@ RUN conda --version
 
 # Create the environment:
 COPY environment.yml .
-RUN conda env create -f environment.yml -n base-sspcloud
-ENV CONDA_DEFAULT_ENV="base-sspcloud"
+RUN conda env create -f environment.yml -n basesspcloud
+ENV CONDA_DEFAULT_ENV="basesspcloud"
 
 
 RUN echo "alias pip=pip3" >> ~/.bashrc
 RUN echo "alias python=python3" >> ~/.bashrc
 
 RUN echo ". /home/coder/local/bin/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
-    echo "conda activate base-sspcloud" >> ~/.bashrc
-RUN echo "\"python.pythonPath\": \"/home/coder/local/bin/conda/envs/base-sspcloud/bin\" " >> /home/coder/.local/share/code-server/User/settings.json
+    echo "conda activate basesspcloud" >> ~/.bashrc
+RUN echo "\"python.pythonPath\": \"/home/coder/local/bin/conda/envs/basesspcloud/bin\" " >> /home/coder/.local/share/code-server/User/settings.json
     
     
-ENV PATH /home/coder/local/bin/conda/envs/base-sspcloud/bin:$PATH
+ENV PATH /home/coder/local/bin/conda/envs/basesspcloud/bin:$PATH
