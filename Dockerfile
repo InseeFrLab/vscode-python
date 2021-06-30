@@ -41,7 +41,7 @@ RUN bash Miniconda3-latest-Linux-x86_64.sh -b -u /opt/conda \
 RUN sudo useradd -s /bin/bash miniconda
     
 RUN sudo chown -R miniconda:miniconda /opt/conda \
-    && chmod -R go-w /opt/conda
+    && sudo chmod -R go-w /opt/conda
 
     
 RUN ln -s /opt/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
