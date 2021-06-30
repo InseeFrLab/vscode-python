@@ -35,17 +35,17 @@ RUN wget \
     https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 RUN sudo mkdir -p /usr/local/bin/conda
 
-RUN bash Miniconda3-latest-Linux-x86_64.sh -b -u /usr/local/bin/conda \
+RUN bash Miniconda3-latest-Linux-x86_64.sh -b -u /home/coder/local/bin/conda \
     && rm -f Miniconda3-latest-Linux-x86_64.sh
 RUN sudo useradd -s /bin/bash miniconda
     
-RUN sudo chown -R miniconda:miniconda /usr/local/bin/conda \
-    && sudo chmod -R go-w /usr/local/bin/conda
+RUN sudo chown -R miniconda:miniconda /home/coder/local/bin/conda \
+    && sudo chmod -R go-w /home/coder/local/bin/conda
 
     
-RUN sudo ln -s /usr/local/bin/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
+RUN sudo ln -s /home/coder/local/bin/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
     
-ENV PATH /usr/local/bin/conda/bin:$PATH
+ENV PATH /home/coder/local/bin/conda/bin:$PATH
 RUN conda --version
 
 # Create the environment:
@@ -56,5 +56,5 @@ RUN conda env create -f environment.yml -n base
 RUN echo "alias pip=pip3" >> ~/.bashrc
 RUN echo "alias python=python3" >> ~/.bashrc
 
-RUN echo ". /opt/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
+RUN echo ". /home/coder/local/bin/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "conda activate base" >> ~/.bashrc
