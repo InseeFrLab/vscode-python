@@ -60,4 +60,4 @@ RUN echo "alias python=python3" >> ~/.bashrc
 RUN echo ". /home/coder/local/bin/conda/etc/profile.d/conda.sh" >> ~/.bashrc && \
     echo "conda activate base-sspcloud" >> ~/.bashrc
     
-ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "base-sspcloud", "python"]
+ENV PATH /home/coder/local/bin/conda/envs/base-sspcloud/bin:$PATH
