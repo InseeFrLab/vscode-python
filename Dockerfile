@@ -34,7 +34,6 @@ RUN code-server --install-extension redhat.vscode-yaml
 RUN wget \
     https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 RUN sudo mkdir -p /usr/local/bin/conda
-RUN ls
 
 RUN bash Miniconda3-latest-Linux-x86_64.sh -b -u /usr/local/bin/conda \
     && rm -f Miniconda3-latest-Linux-x86_64.sh
@@ -44,7 +43,7 @@ RUN sudo chown -R miniconda:miniconda /usr/local/bin/conda \
     && sudo chmod -R go-w /usr/local/bin/conda
 
     
-RUN ln -s /usr/local/bin/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
+RUN sudo ln -s /usr/local/bin/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
     
 ENV PATH /usr/local/bin/conda/bin:$PATH
 RUN conda --version
