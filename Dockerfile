@@ -25,11 +25,28 @@ ENV PATH="/home/coder/.local/bin:${PATH}"
 ADD requirements.txt /home/coder/requirements.txt
 RUN pip3 install --upgrade -r /home/coder/requirements.txt
 RUN rm /home/coder/requirements.txt
+
+
+# INSTALL VSTUDIO EXTENSIONS
+
 RUN code-server --install-extension ms-python.python
 RUN code-server --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
 RUN code-server --install-extension redhat.vscode-yaml  
+RUN code-server --install-extension 
 #ADD vscode-settings.json /home/coder/.local/share/code-server/User/settings.json
 
+
+RUN code-server --install-extension coenraads.bracket-pair-colorizer 
+RUN code-server --install-extension eamodio.gitlens ms-azuretools.vscode-docker
+RUN code-server --install-extension ms-python.vscode-pylance ms-toolsai.jupyter
+RUN code-server --install-extension dongli.python-preview njpwerner.autodocstring
+RUN code-server --install-extension bierner.markdown-emoji
+
+
+
+
+
+# INSTALL MINICONDA -------------------------------
 
 RUN wget \
     https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
@@ -51,6 +68,10 @@ RUN conda --version
 # Create the environment:
 COPY environment.yml .
 RUN conda env create -f environment.yml -n basesspcloud
+
+
+# MAKE SURE THE basesspcloud CONDAENV IS USED ----------------
+
 ENV CONDA_DEFAULT_ENV="basesspcloud"
 
 
