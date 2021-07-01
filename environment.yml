@@ -11,5 +11,10 @@ dependencies:
   - scikit-learn
   - xgboost
   - pylint
+  - boto3
+  - s3fs
   - pip:
     - fasttext
+    - pyyaml
+    - xlrd
+    - jupyter
