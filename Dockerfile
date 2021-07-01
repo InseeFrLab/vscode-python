@@ -33,11 +33,15 @@ RUN code-server --install-extension ms-python.python
 RUN code-server --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
 RUN code-server --install-extension redhat.vscode-yaml  
 
-RUN code-server --install-extension coenraads.bracket-pair-colorizer 
-RUN code-server --install-extension eamodio.gitlens ms-azuretools.vscode-docker
-RUN code-server --install-extension ms-python.vscode-pylance ms-toolsai.jupyter
-RUN code-server --install-extension dongli.python-preview njpwerner.autodocstring
+RUN code-server --install-extension coenraads.bracket-pair-colorizer
+RUN code-server --install-extension eamodio.gitlens
+RUN code-server --install-extension ms-azuretools.vscode-docker
+#RUN code-server --install-extension ms-python.vscode-pylance
+#RUN code-server --install-extension ms-toolsai.jupyter
+RUN code-server --install-extension dongli.python-preview
+RUN code-server --install-extension njpwerner.autodocstring
 RUN code-server --install-extension bierner.markdown-emoji
+
 
 #ADD vscode-settings.json /home/coder/.local/share/code-server/User/settings.json
 
