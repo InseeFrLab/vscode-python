@@ -81,6 +81,5 @@ RUN echo "alias python=python3" >> ~/.bashrc
 
 #RUN echo "conda activate basesspcloud" >> ~/.bashrc
 RUN echo "{\"workbench.colorTheme\": \"Default Dark+\", \"python.pythonPath\": \"/home/coder/.conda/envs/basesspcloud/bin\"}" >> /home/coder/.local/share/code-server/User/settings.json
-    
-    
+
 ENV PATH="/home/coder/.conda/envs/basesspcloud/bin:$PATH"
