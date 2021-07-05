@@ -82,4 +82,7 @@ RUN echo "alias python=python3" >> ~/.bashrc
 #RUN echo "conda activate basesspcloud" >> ~/.bashrc
 RUN echo "{\"workbench.colorTheme\": \"Default Dark+\", \"python.pythonPath\": \"/home/coder/.conda/envs/basesspcloud/bin\"}" >> /home/coder/.local/share/code-server/User/settings.json
 
+# Nice colors in python terminal
+RUN echo "import sys ; from IPython.core.ultratb import ColorTB ; sys.excepthook = ColorTB() ;" >> /home/coder/.conda/envs/basesspcloud/lib/python3.9/site-packages/sitecustomize.py
+
 ENV PATH="/home/coder/.conda/envs/basesspcloud/bin:$PATH"
