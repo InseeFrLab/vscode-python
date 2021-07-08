@@ -1,0 +1,20 @@
+name: basesspcloud
+
+channels:
+  - conda-forge
+
+dependencies:
+  - python
+  - numpy
+  - pandas
+  - seaborn
+  - scikit-learn
+  - xgboost
+  - pylint
+  - boto3
+  - s3fs
+  - pip:
+    - fasttext
+    - pyyaml
+    - xlrd
+    - jupyter

@@ -21,7 +21,20 @@ If you need a package, e.g. `flask`, open a terminal and run
 pip install flask
 ```
 
+Everything is integrated within a `conda` environment. You can also use
+
+```shell
+conda install flask
+```
+
+in a terminal if you prefer. 
+
+You can also edit a `Jupyter Notebook` (extension `.ipynb`) file. The Jupyter
+extension as well as additional useful extensions (`Git Lens` among others)
+is available. 
+
 Please visit https://github.com/cdr/code-server to learn how to use this image.
+
 
 # How to contribute
 If you find something is missing for general python programming with this image, don't hesitate to let us know, either with an issue or by submitting a PR.
