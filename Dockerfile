@@ -24,9 +24,9 @@ RUN sudo wget https://dl.min.io/client/mc/release/linux-amd64/mc -O /usr/local/b
 # Install vault
 RUN sudo apt-get install -y unzip
 RUN sudo cd /usr/bin && \
-    wget https://releases.hashicorp.com/vault/1.3.4/vault_1.3.4_linux_amd64.zip && \
-    unzip vault_1.3.4_linux_amd64.zip && \
-    rm vault_1.3.4_linux_amd64.zip
+    sudo wget https://releases.hashicorp.com/vault/1.3.4/vault_1.3.4_linux_amd64.zip && \
+    sudo unzip vault_1.3.4_linux_amd64.zip && \
+    sudo rm vault_1.3.4_linux_amd64.zip
 RUN sudo vault -autocomplete-install
 
 
