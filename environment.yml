@@ -13,6 +13,8 @@ dependencies:
   - pylint
   - boto3
   - s3fs
+  - dvc
+  - dvc-s3
   - pip:
     - fasttext
     - pyyaml
