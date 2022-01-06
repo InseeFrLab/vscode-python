@@ -35,9 +35,8 @@ RUN rm -f Miniconda3-latest-Linux-x86_64.sh
 
 # RUN sudo chown -R coder:coder /home/coder/local/bin/conda
 RUN sudo ln -s /home/coder/local/bin/conda/etc/profile.d/conda.sh /etc/profile.d/conda.sh
-    
+
 ENV PATH="/home/coder/local/bin/conda/bin:${PATH}"
-RUN conda --version
 
 # Install mamba (speed up packages install with conda)
 # Must be in base conda env
@@ -54,7 +53,7 @@ RUN mkdir -p /home/coder/.local/share/code-server/User/
 RUN echo "{\"workbench.colorTheme\": \"Default Dark+\"" >> /home/coder/.local/share/code-server/User/settings.json
 
 # Nice colors in python terminal
-RUN echo "import sys ; from IPytihon.core.ultratb import ColorTB ; sys.excepthook = ColorTB() ;" >> /home/coder/local/bin/conda/lib/python3.9/site-packages/sitecustomize.py
+RUN echo "import sys ; from IPython.core.ultratb import ColorTB ; sys.excepthook = ColorTB() ;" >> /home/coder/local/bin/conda/lib/python3/site-packages/sitecustomize.py
 
 # INSTALL VSTUDIO EXTENSIONS
 
@@ -64,3 +63,5 @@ RUN code-server --install-extension eamodio.gitlens
 RUN code-server --install-extension coenraads.bracket-pair-colorizer
 RUN code-server --install-extension ms-azuretools.vscode-docker
 RUN code-server --install-extension njpwerner.autodocstring
+
+RUN echo $PATH
