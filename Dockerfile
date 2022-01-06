@@ -53,7 +53,7 @@ RUN mkdir -p /home/coder/.local/share/code-server/User/
 RUN echo "{\"workbench.colorTheme\": \"Default Dark+\"" >> /home/coder/.local/share/code-server/User/settings.json
 
 # Nice colors in python terminal
-RUN echo "import sys ; from IPython.core.ultratb import ColorTB ; sys.excepthook = ColorTB() ;" >> /home/coder/local/bin/conda/lib/python3/site-packages/sitecustomize.py
+RUN echo "import sys ; from IPython.core.ultratb import ColorTB ; sys.excepthook = ColorTB() ;" >> /home/coder/local/bin/conda/lib/python3.9/site-packages/sitecustomize.py
 
 # INSTALL VSTUDIO EXTENSIONS
 
