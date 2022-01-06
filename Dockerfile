@@ -50,7 +50,8 @@ RUN echo "alias pip=pip3" >> ~/.bashrc
 RUN echo "alias python=python3" >> ~/.bashrc
 
 RUN mkdir -p /home/coder/.local/share/code-server/User/
-RUN echo "{\"workbench.colorTheme\": \"Default Dark+\"" >> /home/coder/.local/share/code-server/User/settings.json
+RUN echo "{\"workbench.colorTheme\": \"Default Dark+\", \"python.defaultInterpreterPath\": \"/home/coder/local/bin/conda/lib/python\"}" >> /home/coder/.local/share/code-server/User/settings.json
+
 
 # Nice colors in python terminal
 RUN echo "import sys ; from IPython.core.ultratb import ColorTB ; sys.excepthook = ColorTB() ;" >> /home/coder/local/bin/conda/lib/python3.9/site-packages/sitecustomize.py
