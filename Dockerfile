@@ -90,6 +90,7 @@ RUN echo "alias pip=pip3" >> ~/.bashrc
 RUN echo "alias python=python3" >> ~/.bashrc
 
 #RUN echo "conda activate basesspcloud" >> ~/.bashrc
+RUN mkdir -p /home/coder/.local/share/code-server/User/
 RUN echo "{\"workbench.colorTheme\": \"Default Dark+\", \"python.pythonPath\": \"/home/coder/.conda/envs/basesspcloud/bin\"}" >> /home/coder/.local/share/code-server/User/settings.json
 
 # Nice colors in python terminal
