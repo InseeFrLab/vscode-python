@@ -2,8 +2,6 @@ FROM codercom/code-server:4.0.1
 
 RUN sudo apt-get -y update && \
     sudo apt-get -y install wget \
-                            python3-pip \
-                            pipenv \ 
                             cmake \
                             jq \
                             bash-completion
@@ -29,34 +27,6 @@ RUN cd /usr/bin && \
     sudo rm vault_1.8.4_linux_amd64.zip
 RUN sudo vault -autocomplete-install
 
-
-ENV PYTHONPATH="${PYTHONPATH}:/home/coder/.local/bin"
-ENV PATH="/home/coder/.local/bin:${PATH}"
-ADD requirements.txt /home/coder/requirements.txt
-RUN pip3 install --upgrade -r /home/coder/requirements.txt
-RUN rm /home/coder/requirements.txt
-
-
-# INSTALL VSTUDIO EXTENSIONS
-
-RUN code-server --install-extension ms-python.python
-RUN code-server --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
-RUN code-server --install-extension redhat.vscode-yaml  
-
-RUN code-server --install-extension coenraads.bracket-pair-colorizer
-RUN code-server --install-extension eamodio.gitlens
-RUN code-server --install-extension ms-azuretools.vscode-docker
-#RUN code-server --install-extension ms-python.vscode-pylance
-#RUN code-server --install-extension ms-toolsai.jupyter
-RUN code-server --install-extension dongli.python-preview
-RUN code-server --install-extension njpwerner.autodocstring
-RUN code-server --install-extension bierner.markdown-emoji
-
-
-#ADD vscode-settings.json /home/coder/.local/share/code-server/User/settings.json
-
-
-
 # INSTALL MINICONDA -------------------------------
 
 RUN wget \
@@ -76,15 +46,17 @@ RUN sudo ln -s /home/coder/local/bin/conda/etc/profile.d/conda.sh /etc/profile.d
 ENV PATH="/home/coder/local/bin/conda/bin:${PATH}"
 RUN conda --version
 
-# Create the environment:
-COPY environment.yml .
-RUN conda env create -f environment.yml -n basesspcloud
+# Install mamba (speed up packages install with conda)
+RUN conda install mamba -n base -c conda-forge
 
+# Create the environment
+RUN mamba create -n basesspcloud 
+COPY environment.yml .
+RUN mamba env update -n basesspcloud -f environment.yml
 
 # MAKE SURE THE basesspcloud CONDAENV IS USED ----------------
 
 ENV CONDA_DEFAULT_ENV="basesspcloud"
-
 
 RUN echo "alias pip=pip3" >> ~/.bashrc
 RUN echo "alias python=python3" >> ~/.bashrc
@@ -97,3 +69,18 @@ RUN echo "{\"workbench.colorTheme\": \"Default Dark+\", \"python.pythonPath\": \
 RUN echo "import sys ; from IPython.core.ultratb import ColorTB ; sys.excepthook = ColorTB() ;" >> /home/coder/.conda/envs/basesspcloud/lib/python3.9/site-packages/sitecustomize.py
 
 ENV PATH="/home/coder/.conda/envs/basesspcloud/bin:$PATH"
+
+
+# INSTALL VSTUDIO EXTENSIONS
+
+RUN code-server --install-extension ms-python.python
+RUN code-server --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
+RUN code-server --install-extension redhat.vscode-yaml  
+
+RUN code-server --install-extension coenraads.bracket-pair-colorizer
+RUN code-server --install-extension eamodio.gitlens
+RUN code-server --install-extension ms-azuretools.vscode-docker
+#RUN code-server --install-extension ms-toolsai.jupyter
+RUN code-server --install-extension dongli.python-preview
+RUN code-server --install-extension njpwerner.autodocstring
+RUN code-server --install-extension bierner.markdown-emoji
