@@ -49,19 +49,8 @@ RUN mamba env update -n base -f environment.yml
 RUN echo "alias pip=pip3" >> ~/.bashrc
 RUN echo "alias python=python3" >> ~/.bashrc
 
-RUN mkdir -p /home/coder/.vscode/settings.json
-RUN cat <<EOT >> 
-{
-    "jupyter.kernels.filter": [
-        {
-            "path": "/usr/bin/python3",
-            "type": "pythonEnvironment"
-        }
-    ],
-    "workbench.colorTheme": "Default Dark+", 
-    "python.defaultInterpreterPath": "/home/coder/local/bin/conda/bin/python"
-}
-EOT
+RUN mkdir -p /home/coder/.vscode/
+COPY settings.json /home/coder/.vscode/settings.json
 
 # Nice colors in python terminal
 RUN echo "import sys ; from IPython.core.ultratb import ColorTB ; sys.excepthook = ColorTB() ;" >> /home/coder/local/bin/conda/lib/python3.9/site-packages/sitecustomize.py

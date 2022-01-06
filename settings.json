@@ -1,0 +1,10 @@
+{
+    "jupyter.kernels.filter": [
+        {
+            "path": "/usr/bin/python3",
+            "type": "pythonEnvironment"
+        }
+    ],
+    "workbench.colorTheme": "Default Dark+", 
+    "python.defaultInterpreterPath": "/home/coder/local/bin/conda/bin/python"
+}
