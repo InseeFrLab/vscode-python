@@ -50,7 +50,7 @@ RUN echo "alias pip=pip3" >> ~/.bashrc
 RUN echo "alias python=python3" >> ~/.bashrc
 
 RUN mkdir -p /home/coder/.vscode/settings.json
-cat <<EOT >> 
+RUN cat <<EOT >> 
 {
     "jupyter.kernels.filter": [
         {
