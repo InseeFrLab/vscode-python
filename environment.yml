@@ -1,13 +1,8 @@
-name: basesspcloud
-
 channels:
   - conda-forge
 
 dependencies:
-  - python
-  - pip
   - wheel
-  - jupyter
   - ipykernel
   - numpy
   - pandas

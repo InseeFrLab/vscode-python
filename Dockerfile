@@ -43,26 +43,18 @@ RUN conda --version
 # Must be in base conda env
 RUN conda install mamba -n base -c conda-forge
 
-# Create the environment
-RUN mamba create -n basesspcloud 
+# Install env requirements in base env
 COPY environment.yml .
-RUN mamba env update -n basesspcloud -f environment.yml
-
-# MAKE SURE THE basesspcloud CONDAENV IS USED ----------------
-
-ENV CONDA_DEFAULT_ENV="basesspcloud"
+RUN mamba env update -n base -f environment.yml
 
 RUN echo "alias pip=pip3" >> ~/.bashrc
 RUN echo "alias python=python3" >> ~/.bashrc
 
-#RUN echo "conda activate basesspcloud" >> ~/.bashrc
 RUN mkdir -p /home/coder/.local/share/code-server/User/
-RUN echo "{\"workbench.colorTheme\": \"Default Dark+\", \"python.pythonPath\": \"/home/coder/.conda/envs/basesspcloud/bin\"}" >> /home/coder/.local/share/code-server/User/settings.json
+RUN echo "{\"workbench.colorTheme\": \"Default Dark+\"" >> /home/coder/.local/share/code-server/User/settings.json
 
 # Nice colors in python terminal
-RUN echo "import sys ; from IPytihon.core.ultratb import ColorTB ; sys.excepthook = ColorTB() ;" >> /home/coder/local/bin/conda/envs/basesspcloud/lib/python3.10/site-packages/sitecustomize.py
-ENV PATH="/home/coder/local/bin/conda/envs/basesspcloud/bin:$PATH"
-
+RUN echo "import sys ; from IPytihon.core.ultratb import ColorTB ; sys.excepthook = ColorTB() ;" >> /home/coder/local/bin/conda/lib/python3.9/site-packages/sitecustomize.py
 
 # INSTALL VSTUDIO EXTENSIONS
 
