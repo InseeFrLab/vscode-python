@@ -5,6 +5,9 @@ channels:
 
 dependencies:
   - python
+  - pip
+  - jupyter
+  - ipykernel
   - numpy
   - pandas
   - seaborn
@@ -15,8 +18,5 @@ dependencies:
   - s3fs
   - dvc
   - dvc-s3
-  - pip:
-    - fasttext
-    - pyyaml
-    - xlrd
-    - jupyter
+  - pyyaml
+  - xlrd
