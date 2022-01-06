@@ -50,7 +50,8 @@ RUN echo "alias pip=pip3" >> ~/.bashrc
 RUN echo "alias python=python3" >> ~/.bashrc
 
 RUN mkdir -p /home/coder/.local/share/code-server/User/
-RUN echo "{\"workbench.colorTheme\": \"Default Dark+\", \"python.defaultInterpreterPath\": \"/home/coder/local/bin/conda/bin/python\"}" >> /home/coder/.local/share/code-server/User/settings.json
+RUN chown -R coder:coder /home/coder/.local/share/code-server/User/
+RUN echo "{\"workbench.colorTheme\": \"Default Dark+\", \"python.condaPath\": \"/home/coder/local/bin/conda/condabin/conda"}" >> /home/coder/.local/share/code-server/User/settings.json
 
 
 # Nice colors in python terminal
@@ -64,5 +65,3 @@ RUN code-server --install-extension eamodio.gitlens
 RUN code-server --install-extension coenraads.bracket-pair-colorizer
 RUN code-server --install-extension ms-azuretools.vscode-docker
 RUN code-server --install-extension njpwerner.autodocstring
-
-RUN echo $PATH
