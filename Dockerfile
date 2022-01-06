@@ -47,7 +47,7 @@ ENV PATH="/home/coder/local/bin/conda/bin:${PATH}"
 RUN conda --version
 
 # Install mamba (speed up packages install with conda)
-RUN conda install mamba -n base -c conda-forge
+RUN sudo conda install mamba -n base -c conda-forge
 
 # Create the environment
 RUN mamba create -n basesspcloud 
