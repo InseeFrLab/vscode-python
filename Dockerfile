@@ -51,7 +51,7 @@ RUN echo "alias python=python3" >> ~/.bashrc
 
 RUN mkdir -p /home/coder/.local/share/code-server/User/
 RUN chown -R coder:coder /home/coder/.local/share/code-server/User/
-RUN echo "{\"workbench.colorTheme\": \"Default Dark+\", \"python.condaPath\": \"/home/coder/local/bin/conda/condabin/conda\"}" >> /home/coder/.local/share/code-server/User/settings.json
+RUN echo "{\"workbench.colorTheme\": \"Default Dark+\", \"python.pythonPath\": \"/home/coder/local/bin/conda/bin/python\"}" >> /home/coder/.local/share/code-server/Machine/settings.json
 
 
 # Nice colors in python terminal
