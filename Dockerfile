@@ -49,8 +49,7 @@ RUN mamba env update -n base -f environment.yml
 RUN echo "alias pip=pip3" >> ~/.bashrc
 RUN echo "alias python=python3" >> ~/.bashrc
 
-RUN mkdir -p /home/coder/.local/share/code-server/User/
-RUN chown -R coder:coder /home/coder/.local/share/code-server/User/
+RUN mkdir -p /home/coder/.local/share/code-server/Machine/
 RUN echo "{\"workbench.colorTheme\": \"Default Dark+\", \"python.pythonPath\": \"/home/coder/local/bin/conda/bin/python\"}" >> /home/coder/.local/share/code-server/Machine/settings.json
 
 
