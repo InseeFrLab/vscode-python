@@ -51,7 +51,7 @@ RUN mkdir -p /home/coder/.local/share/code-server/Machine/
 COPY settings.json /home/coder/.local/share/code-server/Machine/settings.json
 
 # Nice colors in python terminal
-RUN echo "import sys ; from IPython.core.ultratb import ColorTB ; sys.excepthook = ColorTB() ;" >> /home/coder/local/bin/conda/lib/python${PYTHON_VERSION}/site-packages/sitecustomize.py
+RUN echo "import sys ; from IPython.core.ultratb import ColorTB ; sys.excepthook = ColorTB() ;" >> /home/coder/local/bin/conda/envs/basesspcloud/lib/python${PYTHON_VERSION}/site-packages/sitecustomize.py
 
 # INSTALL VSTUDIO EXTENSIONS
 RUN code-server --install-extension ms-python.python
