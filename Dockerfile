@@ -34,17 +34,16 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 RUN bash Miniconda3-latest-Linux-x86_64.sh -b -p /home/coder/local/bin/conda
 RUN rm -f Miniconda3-latest-Linux-x86_64.sh
 
-# Add conda to PATH
-ENV PATH="/home/coder/local/bin/conda/bin:${PATH}"
-
 # Install mamba (speed up packages install with conda)
 # Must be in base conda env
+ENV PATH="/home/coder/local/bin/conda/bin:${PATH}"
 RUN conda install mamba -n base -c conda-forge
 
 # Install env requirements
 RUN conda create -n basesspcloud python=$PYTHON_VERSION
 COPY environment.yml .
 RUN mamba env update -n basesspcloud -f environment.yml
+ENV PATH="/home/coder/local/bin/conda/envs/basesspcloud/bin:${PATH}"
 
 # Put additional VSCode settings in remote configuration
 RUN mkdir -p /home/coder/.local/share/code-server/Machine/
@@ -59,3 +58,5 @@ RUN code-server --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
 RUN code-server --install-extension eamodio.gitlens
 RUN code-server --install-extension ms-azuretools.vscode-docker
 RUN code-server --install-extension njpwerner.autodocstring
+
+RUN echo $PATH
