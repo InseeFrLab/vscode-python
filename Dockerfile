@@ -5,7 +5,8 @@ RUN sudo apt-get -y update && \
     sudo apt-get -y install wget \
                             cmake \
                             jq \
-                            bash-completion
+                            bash-completion \
+                            vim
 
 # Install kubectl
 RUN sudo wget "https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl" -O /usr/local/bin/kubectl && \
