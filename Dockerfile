@@ -1,4 +1,4 @@
-FROM codercom/code-server:4.0.1
+FROM codercom/code-server:4.0.2
 ARG PYTHON_VERSION=3.10
 
 RUN sudo apt-get -y update && \
@@ -56,10 +56,8 @@ RUN echo "import sys ; from IPython.core.ultratb import ColorTB ; sys.excepthook
 # INSTALL VSTUDIO EXTENSIONS
 RUN code-server --install-extension ms-python.python
 RUN code-server --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
-RUN code-server --install-extension eamodio.gitlens
 RUN code-server --install-extension ms-azuretools.vscode-docker
 RUN code-server --install-extension njpwerner.autodocstring
-RUN code-server --install-extension coenraads.bracket-pair-colorizer
 RUN code-server --install-extension redhat.vscode-yaml  
 
 RUN echo $PATH
