@@ -52,7 +52,7 @@ RUN echo "export PATH=$PATH"  # Temporary fix while PATH gets overwritten by cod
 RUN echo ". ${CONDA_DIR}/etc/profile.d/conda.sh" >> /home/coder/.bashrc
 RUN echo "conda activate basesspcloud" >> /home/coder/.bashrc
 
-# Put additional VSCode settings in remote configuration
+# Additional VSCode settings
 RUN mkdir -p /home/coder/.local/share/code-server/Machine/
 COPY settings.json /home/coder/.local/share/code-server/Machine/settings.json
 
