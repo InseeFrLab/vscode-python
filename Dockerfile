@@ -31,8 +31,9 @@ RUN cd /usr/bin && \
 RUN sudo vault -autocomplete-install
 
 # INSTALL MINICONDA -------------------------------
+ARG CONDA_DIR=/home/coder/local/bin/conda
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-RUN bash Miniconda3-latest-Linux-x86_64.sh -b -p /home/coder/local/bin/conda
+RUN bash Miniconda3-latest-Linux-x86_64.sh -b -p $CONDA_DIR
 RUN rm -f Miniconda3-latest-Linux-x86_64.sh
 
 # Install mamba (speed up packages install with conda)
@@ -44,7 +45,11 @@ RUN conda install mamba -n base -c conda-forge
 RUN conda create -n basesspcloud python=$PYTHON_VERSION
 COPY environment.yml .
 RUN mamba env update -n basesspcloud -f environment.yml
+
+# Make basesspcloud env activated by default in shells
 ENV PATH="/home/coder/local/bin/conda/envs/basesspcloud/bin:${PATH}"
+RUN echo ". ${CONDA_DIR}/etc/profile.d/conda.sh" >> /home/coder/.bashrc
+RUN echo "conda activate basesspcloud" >> /home/coder/.bashrc
 
 # Put additional VSCode settings in remote configuration
 RUN mkdir -p /home/coder/.local/share/code-server/Machine/
@@ -58,10 +63,4 @@ RUN code-server --install-extension ms-python.python
 RUN code-server --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
 RUN code-server --install-extension ms-azuretools.vscode-docker
 RUN code-server --install-extension njpwerner.autodocstring
-RUN code-server --install-extension redhat.vscode-yaml  
-
-# Make RUN commands use the new conda env
-SHELL ["conda", "run", "-n", "basesspcloud", "/bin/bash", "-c"]
-
-ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "basesspcloud", 
-            "/usr/bin/entrypoint.sh", "--bind-addr", "0.0.0.0:8080", "."]
+RUN code-server --install-extension redhat.vscode-yaml
