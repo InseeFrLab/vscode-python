@@ -48,9 +48,7 @@ RUN mamba env update -n basesspcloud -f environment.yml
 
 # Make basesspcloud env activated by default in shells
 ENV PATH="/home/coder/local/bin/conda/envs/basesspcloud/bin:${PATH}"
-RUN echo "export PATH=$PATH"  # Temporary fix while PATH gets overwritten by code-server
-RUN echo ". ${CONDA_DIR}/etc/profile.d/conda.sh" >> /home/coder/.bashrc
-RUN echo "conda activate basesspcloud" >> /home/coder/.bashrc
+RUN echo "export PATH=$PATH" >> /home/coder/.bashrc  # Temporary fix while PATH gets overwritten by code-server
 
 # Additional VSCode settings
 # Put in remote settings because : https://github.com/coder/code-server/issues/4609

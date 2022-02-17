@@ -1,5 +1,6 @@
 {
     "workbench.colorTheme": "Default Dark+", 
     "python.pythonPath": "/home/coder/local/bin/conda/envs/basesspcloud/bin/python",
-    "python.defaultInterpreterPath": "/home/coder/local/bin/conda/envs/basesspcloud/bin/python"
+    "python.defaultInterpreterPath": "/home/coder/local/bin/conda/envs/basesspcloud/bin/python",
+    "terminal.integrated.inheritEnv": false
 }
