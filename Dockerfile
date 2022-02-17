@@ -53,11 +53,9 @@ RUN echo ". ${CONDA_DIR}/etc/profile.d/conda.sh" >> /home/coder/.bashrc
 RUN echo "conda activate basesspcloud" >> /home/coder/.bashrc
 
 # Additional VSCode settings
+# Put in remote settings because : https://github.com/coder/code-server/issues/4609
 RUN mkdir -p /home/coder/.local/share/code-server/Machine/
 COPY settings.json /home/coder/.local/share/code-server/Machine/settings.json
-
-# Nice colors in python terminal
-RUN echo "import sys ; from IPython.core.ultratb import ColorTB ; sys.excepthook = ColorTB() ;" >> /home/coder/local/bin/conda/envs/basesspcloud/lib/python${PYTHON_VERSION}/site-packages/sitecustomize.py
 
 # INSTALL VSTUDIO EXTENSIONS
 RUN code-server --install-extension ms-python.python
