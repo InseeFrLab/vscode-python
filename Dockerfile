@@ -60,4 +60,4 @@ RUN code-server --install-extension ms-azuretools.vscode-docker
 RUN code-server --install-extension njpwerner.autodocstring
 RUN code-server --install-extension redhat.vscode-yaml  
 
-RUN echo $PATH
+ENTRYPOINT ["conda", "run", "-n", "basesspcloud", "/usr/bin/entrypoint.sh", "--bind-addr", "0.0.0.0:8080", "."]
