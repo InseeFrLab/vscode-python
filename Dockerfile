@@ -60,4 +60,8 @@ RUN code-server --install-extension ms-azuretools.vscode-docker
 RUN code-server --install-extension njpwerner.autodocstring
 RUN code-server --install-extension redhat.vscode-yaml  
 
-ENTRYPOINT ["conda", "run", "-n", "basesspcloud", "/usr/bin/entrypoint.sh", "--bind-addr", "0.0.0.0:8080", "."]
+# Make RUN commands use the new conda env
+SHELL ["conda", "run", "-n", "basesspcloud", "/bin/bash", "-c"]
+
+ENTRYPOINT ["conda", "run", "--no-capture-output", "-n", "basesspcloud", 
+            "/usr/bin/entrypoint.sh", "--bind-addr", "0.0.0.0:8080", "."]
