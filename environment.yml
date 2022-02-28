@@ -6,6 +6,7 @@ channels:
 dependencies:
   - wheel
   - ipykernel
+  - flake8
   - numpy
   - pandas
   - seaborn
