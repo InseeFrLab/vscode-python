@@ -18,4 +18,5 @@ dependencies:
   - dvc
   - dvc-s3
   - pyyaml
+  - pytest
   - xlrd
