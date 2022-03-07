@@ -1,4 +1,4 @@
-FROM codercom/code-server:4.0.2
+FROM codercom/code-server:4.1.0
 ARG PYTHON_VERSION=3.10
 
 RUN sudo apt-get -y update && \
