@@ -13,6 +13,7 @@ dependencies:
   - scikit-learn
   - xgboost
   - pylint
+  - hvac
   - boto3
   - s3fs
   - dvc
