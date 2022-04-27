@@ -1,5 +1,6 @@
 FROM codercom/code-server:4.3.0
 ARG PYTHON_VERSION=3.10
+ARG QUARTO_VERSION="0.9.287"
 
 RUN sudo apt-get -y update && \
     sudo apt-get -y install wget \
@@ -32,11 +33,8 @@ RUN cd /usr/bin && \
 RUN sudo vault -autocomplete-install
 
 # Install QUARTO
-ENV QUARTO_VERSION="0.9.287"
-ENV QUARTO_VISX_VERSION="1.17.0"
 RUN wget "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb"
 RUN sudo apt install "./quarto-${QUARTO_VERSION}-linux-amd64.deb"
-RUN wget https://github.com/quarto-dev/quarto-vscode/raw/main/visx/quarto-${QUARTO_VISX_VERSION}.vsix
 
 # INSTALL MINICONDA -------------------------------
 ARG CONDA_DIR=/home/coder/local/bin/conda
@@ -69,4 +67,4 @@ RUN code-server --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
 RUN code-server --install-extension ms-azuretools.vscode-docker
 RUN code-server --install-extension njpwerner.autodocstring
 RUN code-server --install-extension redhat.vscode-yaml
-RUN code-server --install-extension quarto-${QUARTO_VISX_VERSION}.vsix
+RUN code-server --install-extension quarto.quarto
