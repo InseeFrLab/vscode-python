@@ -31,6 +31,13 @@ RUN cd /usr/bin && \
     sudo rm vault_1.8.4_linux_amd64.zip
 RUN sudo vault -autocomplete-install
 
+# Install QUARTO
+ENV QUARTO_VERSION="0.9.287"
+ENV QUARTO_VISX_VERSION="1.17.0"
+RUN wget "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb"
+RUN apt install "./quarto-${QUARTO_VERSION}-linux-amd64.deb"
+RUN wget https://github.com/quarto-dev/quarto-vscode/raw/main/visx/quarto-${QUARTO_VISX_VERSION}.vsix
+
 # INSTALL MINICONDA -------------------------------
 ARG CONDA_DIR=/home/coder/local/bin/conda
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
@@ -62,3 +69,4 @@ RUN code-server --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
 RUN code-server --install-extension ms-azuretools.vscode-docker
 RUN code-server --install-extension njpwerner.autodocstring
 RUN code-server --install-extension redhat.vscode-yaml
+RUN code-server --install-extension quarto-1.17.0.vsix
