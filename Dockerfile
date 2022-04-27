@@ -69,4 +69,4 @@ RUN code-server --install-extension ms-kubernetes-tools.vscode-kubernetes-tools
 RUN code-server --install-extension ms-azuretools.vscode-docker
 RUN code-server --install-extension njpwerner.autodocstring
 RUN code-server --install-extension redhat.vscode-yaml
-RUN code-server --install-extension quarto-1.17.0.vsix
+RUN code-server --install-extension quarto-${QUARTO_VISX_VERSION}.vsix
