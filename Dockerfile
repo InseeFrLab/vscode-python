@@ -35,7 +35,7 @@ RUN sudo vault -autocomplete-install
 ENV QUARTO_VERSION="0.9.287"
 ENV QUARTO_VISX_VERSION="1.17.0"
 RUN wget "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb"
-RUN apt install "./quarto-${QUARTO_VERSION}-linux-amd64.deb"
+RUN sudo apt install "./quarto-${QUARTO_VERSION}-linux-amd64.deb"
 RUN wget https://github.com/quarto-dev/quarto-vscode/raw/main/visx/quarto-${QUARTO_VISX_VERSION}.vsix
 
 # INSTALL MINICONDA -------------------------------
