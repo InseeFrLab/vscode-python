@@ -2,14 +2,17 @@ FROM codercom/code-server:4.3.0
 ARG PYTHON_VERSION=3.10
 ARG QUARTO_VERSION="0.9.287"
 
+USER root
+
 # Install common softwares
-RUN sudo apt-get -y update && \ 
-    curl -s https://raw.githubusercontent.com/InseeFrLab/onyxia/main/resources/common-software-docker-images.sh | sudo bash -s && \
-    sudo apt-get -y install cmake g++
+RUN apt-get -y update && \ 
+    curl -s https://raw.githubusercontent.com/InseeFrLab/onyxia/main/resources/common-software-docker-images.sh | bash -s && \
+    apt-get -y install cmake g++ && \
+    rm -rf /var/lib/apt/lists/*
 
 # Install QUARTO
 RUN wget "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb"
-RUN sudo apt install "./quarto-${QUARTO_VERSION}-linux-amd64.deb"
+RUN apt install "./quarto-${QUARTO_VERSION}-linux-amd64.deb"
 
 # INSTALL MINICONDA -------------------------------
 ARG CONDA_DIR=/home/coder/local/bin/conda
