@@ -3,11 +3,8 @@ ARG PYTHON_VERSION=3.10
 ARG QUARTO_VERSION="0.9.287"
 
 # Install common softwares
-RUN sudo curl -s https://raw.githubusercontent.com/InseeFrLab/onyxia/main/resources/common-software-docker-images.sh | bash
-
-RUN sudo apt-get -y update && \
-    sudo apt-get -y install cmake \
-                            g++
+RUN curl -s https://raw.githubusercontent.com/InseeFrLab/onyxia/main/resources/common-software-docker-images.sh | sudo bash -s
+RUN sudo apt-get -y install cmake g++
 
 # Install QUARTO
 RUN wget "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb"
