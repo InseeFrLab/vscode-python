@@ -1,4 +1,4 @@
-FROM codercom/code-server:4.3.0
+FROM codercom/code-server:4.4.0
 ARG PYTHON_VERSION=3.10
 ARG QUARTO_VERSION="0.9.287"
 
