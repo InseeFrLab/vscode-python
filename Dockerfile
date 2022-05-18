@@ -7,7 +7,7 @@ USER root
 # Install common softwares
 RUN apt-get -y update && \ 
     curl -s https://raw.githubusercontent.com/InseeFrLab/onyxia/main/resources/common-software-docker-images.sh | bash -s && \
-    apt-get -y install cmake g++ && \
+    apt-get install -y --no-install-recommends cmake g++ && \
     rm -rf /var/lib/apt/lists/*
 
 # Install QUARTO
