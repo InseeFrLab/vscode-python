@@ -6,6 +6,8 @@ channels:
 dependencies:
   - wheel
   - ipykernel
+  - nbclient
+  - nbformat
   - flake8
   - numpy
   - pandas
