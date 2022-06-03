@@ -1,11 +1,13 @@
 FROM codercom/code-server:4.4.0
 ARG PYTHON_VERSION=3.10
 
-# Install common softwares
-RUN apt-get -y update && \ 
+USER root
+
+# Install system libraries
+RUN sudo apt-get -y update && \ 
     curl -s https://raw.githubusercontent.com/InseeFrLab/onyxia/main/resources/common-software-docker-images.sh | bash -s && \
     apt-get install -y --no-install-recommends cmake g++ && \
-    rm -rf /var/lib/apt/lists/*
+    sudo rm -rf /var/lib/apt/lists/*
 
 # Install QUARTO
 ARG QUARTO_VERSION="0.9.508"
@@ -46,3 +48,5 @@ RUN code-server --install-extension ms-azuretools.vscode-docker
 RUN code-server --install-extension njpwerner.autodocstring
 RUN code-server --install-extension redhat.vscode-yaml
 RUN code-server --install-extension quarto.quarto
+
+USER coder
