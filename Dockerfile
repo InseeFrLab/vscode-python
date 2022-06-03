@@ -40,8 +40,8 @@ RUN echo "export PATH=$PATH" >> /home/coder/.bashrc
 USER coder
 
 # Additional VSCode settings
-RUN mkdir -p /home/coder/.local/share/code-server/User/
-COPY settings.json /home/coder/.local/share/code-server/User/settings.json
+COPY settings/User /home/coder/.local/share/code-server/User
+COPY settings/Machine /home/coder/.local/share/code-server/Machine
 
 # INSTALL VSTUDIO EXTENSIONS
 RUN code-server --install-extension ms-python.python
