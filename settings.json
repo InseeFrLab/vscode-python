@@ -1,8 +1,10 @@
 {
     "workbench.colorTheme": "Default Dark+", 
+    "security.workspace.trust.enabled": false,
+    "security.workspace.trust.startupPrompt": "never",
+    "terminal.integrated.inheritEnv": false,
     "python.pythonPath": "/home/coder/local/bin/conda/envs/basesspcloud/bin/python",
     "python.defaultInterpreterPath": "/home/coder/local/bin/conda/envs/basesspcloud/bin/python",
-    "terminal.integrated.inheritEnv": false,
     "python.linting.flake8Enabled": true,
     "python.testing.pytestEnabled": true
 }

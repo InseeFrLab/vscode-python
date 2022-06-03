@@ -1,8 +1,5 @@
 FROM codercom/code-server:4.4.0
 ARG PYTHON_VERSION=3.10
-ARG QUARTO_VERSION="0.9.393"
-
-USER root
 
 # Install common softwares
 RUN apt-get -y update && \ 
@@ -11,6 +8,7 @@ RUN apt-get -y update && \
     rm -rf /var/lib/apt/lists/*
 
 # Install QUARTO
+ARG QUARTO_VERSION="0.9.508"
 RUN wget "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb"
 RUN apt install "./quarto-${QUARTO_VERSION}-linux-amd64.deb"
 
@@ -30,14 +28,16 @@ RUN conda create -n basesspcloud python=$PYTHON_VERSION
 COPY environment.yml .
 RUN mamba env update -n basesspcloud -f environment.yml
 
-# Make basesspcloud env activated by default in shells
+# Use basesspcloud env by default
+RUN '. "/home/coder/local/bin/conda/etc/profile.d/conda.sh"' >> /home/coder/.bashrc
+RUN 'conda activate basesspcloud' >> /home/coder/.bashrc
 ENV PATH="/home/coder/local/bin/conda/envs/basesspcloud/bin:${PATH}"
-RUN echo "export PATH=$PATH" >> /home/coder/.bashrc  # Temporary fix while PATH gets overwritten by code-server
+RUN echo "export PATH=$PATH" >> /home/coder/.bashrc
 
 # Additional VSCode settings
 # Put in remote settings because : https://github.com/coder/code-server/issues/4609
-RUN mkdir -p /home/coder/.local/share/code-server/Machine/
-COPY settings.json /home/coder/.local/share/code-server/Machine/settings.json
+RUN mkdir -p /home/coder/.local/share/code-server/User/
+COPY settings.json /home/coder/.local/share/code-server/User/settings.json
 
 # INSTALL VSTUDIO EXTENSIONS
 RUN code-server --install-extension ms-python.python
