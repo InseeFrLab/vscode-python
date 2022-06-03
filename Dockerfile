@@ -31,8 +31,8 @@ COPY environment.yml .
 RUN mamba env update -n basesspcloud -f environment.yml
 
 # Use basesspcloud env by default
-RUN '. "/home/coder/local/bin/conda/etc/profile.d/conda.sh"' >> /home/coder/.bashrc
-RUN 'conda activate basesspcloud' >> /home/coder/.bashrc
+RUN echo '. "/home/coder/local/bin/conda/etc/profile.d/conda.sh"' >> /home/coder/.bashrc
+RUN echo 'conda activate basesspcloud' >> /home/coder/.bashrc
 ENV PATH="/home/coder/local/bin/conda/envs/basesspcloud/bin:${PATH}"
 RUN echo "export PATH=$PATH" >> /home/coder/.bashrc
 
