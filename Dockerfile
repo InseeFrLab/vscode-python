@@ -36,11 +36,12 @@ RUN echo 'conda activate basesspcloud' >> /home/coder/.bashrc
 ENV PATH="/home/coder/local/bin/conda/envs/basesspcloud/bin:${PATH}"
 RUN echo "export PATH=$PATH" >> /home/coder/.bashrc
 
+# Switch back to non-root user
+USER coder
+
 # Additional VSCode settings
 RUN mkdir -p /home/coder/.local/share/code-server/User/
 COPY settings.json /home/coder/.local/share/code-server/User/settings.json
-
-USER coder
 
 # INSTALL VSTUDIO EXTENSIONS
 RUN code-server --install-extension ms-python.python
