@@ -41,9 +41,9 @@ USER coder
 
 # Additional VSCode settings
 RUN mkdir -p /home/coder/.local/share/code-server/User/
-COPY settings/User.json /home/coder/.local/share/code-server/User/settings.json
+COPY --chown=coder:coder settings/User.json /home/coder/.local/share/code-server/User/settings.json
 RUN mkdir -p /home/coder/.local/share/code-server/Machine/
-COPY settings/Machine.json /home/coder/.local/share/code-server/Machine/settings.json
+COPY --chown=coder:coder settings/Machine.json /home/coder/.local/share/code-server/Machine/settings.json
 
 # INSTALL VSTUDIO EXTENSIONS
 RUN code-server --install-extension ms-python.python
