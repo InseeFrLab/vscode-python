@@ -14,6 +14,9 @@ ARG QUARTO_VERSION="0.9.508"
 RUN wget "https://github.com/quarto-dev/quarto-cli/releases/download/v${QUARTO_VERSION}/quarto-${QUARTO_VERSION}-linux-amd64.deb"
 RUN apt install "./quarto-${QUARTO_VERSION}-linux-amd64.deb"
 
+# Switch back to non-root user
+USER coder
+
 # INSTALL MINICONDA -------------------------------
 ARG CONDA_DIR=/home/coder/local/bin/conda
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
@@ -35,9 +38,6 @@ RUN echo '. "/home/coder/local/bin/conda/etc/profile.d/conda.sh"' >> /home/coder
 RUN echo 'conda activate basesspcloud' >> /home/coder/.bashrc
 ENV PATH="/home/coder/local/bin/conda/envs/basesspcloud/bin:${PATH}"
 RUN echo "export PATH=$PATH" >> /home/coder/.bashrc
-
-# Switch back to non-root user
-USER coder
 
 # Additional VSCode settings
 RUN mkdir -p /home/coder/.local/share/code-server/User/
