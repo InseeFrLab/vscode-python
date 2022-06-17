@@ -52,3 +52,4 @@ RUN code-server --install-extension ms-azuretools.vscode-docker
 RUN code-server --install-extension njpwerner.autodocstring
 RUN code-server --install-extension redhat.vscode-yaml
 RUN code-server --install-extension quarto.quarto
+RUN code-server --install-extension mhutchie.git-graph
