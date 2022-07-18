@@ -53,3 +53,4 @@ RUN code-server --install-extension njpwerner.autodocstring
 RUN code-server --install-extension redhat.vscode-yaml
 RUN code-server --install-extension quarto.quarto
 RUN code-server --install-extension mhutchie.git-graph
+RUN code-server --install-extension julialang.language-julia
